@@ -1,18 +1,32 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
+import { FoodsProvider } from "@/context/FoodsProvider";
+import { UsersProvider } from "@/context/UsersProvider";
+import "@/i18n";
+import { Stack } from "expo-router";
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
-
-SplashScreen.preventAutoHideAsync();
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function _layout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
+    <UsersProvider>
+      <FoodsProvider>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            statusBarStyle: "dark",
+          }}
+        >
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="index" />
+          <Stack.Screen name="login" />
+          <Stack.Screen name="register" />
+          <Stack.Screen
+            name="restaurants/[id]"
+            options={{ statusBarStyle: "light" }}
+          />
+          <Stack.Screen name="address" />
+          <Stack.Screen name="payments" />
+          <Stack.Screen name="orders/currentOrder" />
+          <Stack.Screen name="orders/orderHistory" />
+        </Stack>
+      </FoodsProvider>
+    </UsersProvider>
   );
 }

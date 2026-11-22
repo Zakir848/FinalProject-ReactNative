@@ -1,0 +1,316 @@
+{
+  "users": [
+    {
+      "id": "O7DQ_v9BdO4",
+      "fullname": "Zakir Abılov",
+      "email": "Zakir@gmail.com",
+      "password": "Zakir2005@",
+      "imageUrl": "https://img.magnific.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
+    },
+    {
+      "id": "GmNe17WC4Do",
+      "fullname": "Zako",
+      "email": "Zakirabilov023@gmail.com",
+      "password": "Zako123",
+      "imageUrl": ""
+    }
+  ],
+  "restaurants": [
+    {
+      "id": "1",
+      "name": "KFC",
+      "imageUrl": "https://images.unsplash.com/photo-1562967914-608f82629710?w=800",
+      "foods": [
+        {
+          "id": "1",
+          "name": "Zinger Burger",
+          "description": "Xırtıldayan toyuq filesi, kahı və xüsusi sous",
+          "quantity": 1,
+          "price": 8.9,
+          "imageUrl": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600",
+          "category": "Burger"
+        },
+        {
+          "id": "2",
+          "name": "Hot Wings",
+          "description": "6 ədəd acılı və xırtıldayan toyuq qanadı",
+          "quantity": 1,
+          "price": 10.5,
+          "imageUrl": "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=600",
+          "category": "Chicken"
+        },
+        {
+          "id": "3",
+          "name": "Twister",
+          "description": "Lavaşda toyuq filesi, tərəvəz və mayonez",
+          "quantity": 1,
+          "price": 7.5,
+          "imageUrl": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=600",
+          "category": "Wrap"
+        },
+        {
+          "id": "4",
+          "name": "Chicken Bucket",
+          "description": "8 ədəd toyuq parçasından ibarət böyük paket",
+          "quantity": 1,
+          "price": 24.9,
+          "imageUrl": "https://images.unsplash.com/photo-1562967914-608f82629710?w=600",
+          "category": "Chicken"
+        },
+        {
+          "id": "5",
+          "name": "Popcorn Chicken",
+          "description": "Kiçik xırtıldayan toyuq tikələri",
+          "quantity": 1,
+          "price": 6.9,
+          "imageUrl": "https://images.unsplash.com/photo-1562967914-608f82629710?w=600",
+          "category": "Chicken"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "McDonald's",
+      "imageUrl": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800",
+      "foods": [
+        {
+          "id": "6",
+          "name": "Big Mac",
+          "description": "İki mal əti kotleti, pendir və xüsusi Big Mac sousu",
+          "quantity": 1,
+          "price": 9.5,
+          "imageUrl": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
+          "category": "Burger"
+        },
+        {
+          "id": "7",
+          "name": "Cheeseburger",
+          "description": "Mal əti kotleti, pendir, turşu xiyar və ketçup",
+          "quantity": 1,
+          "price": 4.9,
+          "imageUrl": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600",
+          "category": "Burger"
+        },
+        {
+          "id": "8",
+          "name": "Chicken McNuggets",
+          "description": "9 ədəd toyuq naggetsi və sous",
+          "quantity": 1,
+          "price": 7.9,
+          "imageUrl": "https://images.unsplash.com/photo-1562967914-608f82629710?w=600",
+          "category": "Chicken"
+        },
+        {
+          "id": "9",
+          "name": "McChicken",
+          "description": "Toyuq kotleti, kahı və mayonezli burger",
+          "quantity": 1,
+          "price": 7.5,
+          "imageUrl": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600",
+          "category": "Burger"
+        },
+        {
+          "id": "10",
+          "name": "French Fries",
+          "description": "Qızılı və xırtıldayan böyük kartof fri",
+          "quantity": 1,
+          "price": 4.5,
+          "imageUrl": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600",
+          "category": "Sides"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Burger King",
+      "imageUrl": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=800",
+      "foods": [
+        {
+          "id": "11",
+          "name": "Whopper",
+          "description": "Qril mal əti, pomidor, kahı və xüsusi sous",
+          "quantity": 1,
+          "price": 11.9,
+          "imageUrl": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
+          "category": "Burger"
+        },
+        {
+          "id": "12",
+          "name": "Double Whopper",
+          "description": "İki qril mal əti kotleti, tərəvəz və sous",
+          "quantity": 1,
+          "price": 15.9,
+          "imageUrl": "https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600",
+          "category": "Burger"
+        },
+        {
+          "id": "13",
+          "name": "Chicken Royale",
+          "description": "Xırtıldayan toyuq filesi, kahı və mayonez",
+          "quantity": 1,
+          "price": 8.9,
+          "imageUrl": "https://images.unsplash.com/photo-1606755962531-cf2a4c1a6e2d?w=600",
+          "category": "Burger"
+        },
+        {
+          "id": "14",
+          "name": "Onion Rings",
+          "description": "8 ədəd xırtıldayan soğan halqası",
+          "quantity": 1,
+          "price": 5.5,
+          "imageUrl": "https://images.unsplash.com/photo-1639024471283-03518883512d?w=600",
+          "category": "Sides"
+        },
+        {
+          "id": "15",
+          "name": "BBQ Bacon Burger",
+          "description": "Mal əti, bekon, pendir və BBQ sousu",
+          "quantity": 1,
+          "price": 12.5,
+          "imageUrl": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600",
+          "category": "Burger"
+        }
+      ]
+    }
+  ],
+  "orders": [],
+  "comments": [],
+  "carts": [
+    {
+      "userId": "O7DQ_v9BdO4",
+      "restaurantId": "3",
+      "foodId": "11",
+      "name": "Whopper",
+      "category": "Burger",
+      "imageUrl": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
+      "price": 11.9,
+      "quantity": 4,
+      "id": "t6V8XRqUnsE"
+    },
+    {
+      "userId": "O7DQ_v9BdO4",
+      "restaurantId": "2",
+      "foodId": "9",
+      "name": "McChicken",
+      "category": "Burger",
+      "imageUrl": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600",
+      "price": 7.5,
+      "quantity": 3,
+      "id": "j4i8um1Nq7U"
+    },
+    {
+      "userId": "O7DQ_v9BdO4",
+      "restaurantId": "2",
+      "foodId": "7",
+      "name": "Cheeseburger",
+      "category": "Burger",
+      "imageUrl": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600",
+      "price": 4.9,
+      "quantity": 2,
+      "id": "QUrkL6aZE0M"
+    },
+    {
+      "userId": "O7DQ_v9BdO4",
+      "restaurantId": "2",
+      "foodId": "6",
+      "name": "Big Mac",
+      "category": "Burger",
+      "imageUrl": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
+      "price": 9.5,
+      "quantity": 1,
+      "id": "MD8IpviNjwQ"
+    },
+    {
+      "userId": "O7DQ_v9BdO4",
+      "restaurantId": "2",
+      "foodId": "8",
+      "name": "Chicken McNuggets",
+      "category": "Chicken",
+      "imageUrl": "https://images.unsplash.com/photo-1562967914-608f82629710?w=600",
+      "price": 7.9,
+      "quantity": 2,
+      "id": "yZLAiIiyVm4"
+    },
+    {
+      "userId": "O7DQ_v9BdO4",
+      "restaurantId": "3",
+      "foodId": "14",
+      "name": "Onion Rings",
+      "category": "Sides",
+      "imageUrl": "https://images.unsplash.com/photo-1639024471283-03518883512d?w=600",
+      "price": 5.5,
+      "quantity": 1,
+      "id": "9P6dqcRq9xY"
+    },
+    {
+      "userId": "O7DQ_v9BdO4",
+      "restaurantId": "2",
+      "foodId": "10",
+      "name": "French Fries",
+      "category": "Sides",
+      "imageUrl": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600",
+      "price": 4.5,
+      "quantity": 1,
+      "id": "RUCe75uL1io"
+    },
+    {
+      "userId": "O7DQ_v9BdO4",
+      "restaurantId": "2",
+      "foodId": "10",
+      "name": "French Fries",
+      "category": "Sides",
+      "imageUrl": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600",
+      "price": 4.5,
+      "quantity": 1,
+      "id": "BO4OOdmpGYo"
+    }
+  ],
+  "addresses": [
+    {
+      "userId": "O7DQ_v9BdO4",
+      "title": "Ev",
+      "street": "Binegedi, Bakü",
+      "details": "Mənzil 59",
+      "latitude": 40.4177613,
+      "longitude": 49.8417766,
+      "id": "SV5qeG1U9MU"
+    },
+    {
+      "userId": "O7DQ_v9BdO4",
+      "title": "Ev",
+      "street": "Binegedi, Bakü",
+      "details": "Damafon 49",
+      "latitude": 40.4177613,
+      "longitude": 49.8417766,
+      "id": "p9O4ciu88jw"
+    },
+    {
+      "userId": "O7DQ_v9BdO4",
+      "title": "İş",
+      "street": "Binegedi, Bakü",
+      "details": "58",
+      "latitude": 40.4177613,
+      "longitude": 49.8417766,
+      "id": "oIF0e-TaNDE"
+    },
+    {
+      "userId": "O7DQ_v9BdO4",
+      "title": "Ev",
+      "street": "Binegedi, Bakü",
+      "details": "59",
+      "latitude": 40.4177613,
+      "longitude": 49.8418031,
+      "id": "L2GTWKAT3_w"
+    },
+    {
+      "userId": "O7DQ_v9BdO4",
+      "title": "Yes",
+      "street": "Binegedi, Baküdkkslslü",
+      "details": "88",
+      "latitude": 40.4177561,
+      "longitude": 49.8417894,
+      "id": "SLu69lpP8fI"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

@@ -1,0 +1,109 @@
+{
+  "common": {
+    "error": "Ошибка",
+    "cancel": "Отмена",
+    "allow": "Разрешить",
+    "or": "или"
+  },
+  "tabs": {
+    "home": "Главная",
+    "favorite": "Избранное",
+    "orders": "Заказы",
+    "profile": "Профиль"
+  },
+  "screens": {
+    "favorite": "Избранное",
+    "orders": "Заказы",
+    "cart": "Корзина",
+    "addresses": "Мои адреса",
+    "payments": "Мои способы оплаты"
+  },
+  "splash": {
+    "subtitle": "ДОСТАВКА И ЗАКАЗ ЕДЫ"
+  },
+  "form": {
+    "email": "Эл. почта",
+    "password": "Пароль",
+    "repeatPassword": "Повторите пароль",
+    "fullname": "Имя и фамилия"
+  },
+  "validation": {
+    "fillAll": "Пожалуйста, заполните все поля",
+    "enterEmail": "Пожалуйста, введите эл. почту",
+    "enterPassword": "Пожалуйста, введите пароль",
+    "enterFullname": "Пожалуйста, введите имя и фамилию",
+    "emailAtSymbol": "Пожалуйста, используйте символ `@`",
+    "passwordMismatch": "Пароли не совпадают!",
+    "invalidCredentials": "Неверная эл. почта или пароль.",
+    "emailTaken": "Эта эл. почта уже зарегистрирована."
+  },
+  "errors": {
+    "serverUnreachable": "Не удалось подключиться к серверу",
+    "generic": "Произошла ошибка!"
+  },
+  "login": {
+    "title": "Вход",
+    "subtitle": "Войдите в свой аккаунт",
+    "forgotPassword": "Забыли пароль?",
+    "submit": "Войти",
+    "withGoogle": "Через Google",
+    "withApple": "Через Apple",
+    "noAccount": "Нет аккаунта?",
+    "register": "Регистрация"
+  },
+  "register": {
+    "title": "Регистрация",
+    "subtitle": "Создайте новый аккаунт",
+    "submit": "Зарегистрироваться",
+    "haveAccount": "Уже есть аккаунт?",
+    "login": "Войти"
+  },
+  "home": {
+    "searchPlaceholder": "Искать рестораны, блюда...",
+    "deliveryAddress": "Адрес доставки"
+  },
+  "profile": {
+    "personalInfo": "Личные данные",
+    "addresses": "Мои адреса",
+    "paymentMethods": "Способы оплаты",
+    "orderHistory": "История заказов",
+    "favorites": "Избранное",
+    "settings": "Настройки",
+    "logout": "Выйти"
+  },
+  "address": {
+    "titlePlaceholder": "Название (Дом, Работа...)",
+    "detailsPlaceholder": "(Квартира, Этаж, Домофон)",
+    "streetPlaceholder": "Улица",
+    "useCurrentLocation": "Использовать текущее местоположение",
+    "addAddress": "Добавить адрес",
+    "permissionDeniedTitle": "Нет разрешения",
+    "permissionDeniedMessage": "Включите доступ к геолокации в настройках",
+    "gpsOffTitle": "GPS выключен",
+    "gpsOffMessage": "Включите геолокацию на телефоне.",
+    "locationFailed": "Не удалось определить местоположение",
+    "requiredFields": "Название, адрес и местоположение обязательны"
+  },
+  "cart": {
+    "sectionTotal": "Итого: {{amount}}",
+    "totalPrice": "Общая сумма",
+    "order": "Оформить заказ"
+  },
+  "order": {
+    "title": "Заказ",
+    "deliveryAddress": "Адрес доставки",
+    "noAddress": "Адрес не выбран",
+    "deliveryTime": "Время доставки",
+    "deliveryNow": "Сейчас (20–30 мин)",
+    "paymentMethod": "Способ оплаты",
+    "payByCard": "Оплата картой",
+    "note": "Комментарий к заказу",
+    "notePlaceholder": "Например: позвоните в дверь...",
+    "total": "Итого",
+    "confirm": "Подтвердить заказ",
+    "successTitle": "Оплата прошла успешно!",
+    "successMessage": "Ваш заказ принят и скоро будет приготовлен.",
+    "paid": "Оплачено",
+    "ok": "Хорошо"
+  }
+}

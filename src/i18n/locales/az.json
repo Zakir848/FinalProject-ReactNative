@@ -1,0 +1,109 @@
+{
+  "common": {
+    "error": "Xəta",
+    "cancel": "Ləğv et",
+    "allow": "İcazə ver",
+    "or": "və ya"
+  },
+  "tabs": {
+    "home": "Ana səhifə",
+    "favorite": "Sevimlilər",
+    "orders": "Sifarişlər",
+    "profile": "Profil"
+  },
+  "screens": {
+    "favorite": "Sevimlilər",
+    "orders": "Sifarişlər",
+    "cart": "Səbət",
+    "addresses": "Ünvanlarım",
+    "payments": "Ödəniş metodlarım"
+  },
+  "splash": {
+    "subtitle": "YEMƏK ÇATDIRILMASI VƏ SİFARİŞ"
+  },
+  "form": {
+    "email": "E-poçt",
+    "password": "Şifrə",
+    "repeatPassword": "Şifrəni təkrarlayın",
+    "fullname": "Ad və Soyad"
+  },
+  "validation": {
+    "fillAll": "Zəhmət olmasa, bütün xanaları doldurun",
+    "enterEmail": "Zəhmət olmasa, e-poçtu daxil edin",
+    "enterPassword": "Zəhmət olmasa, şifrəni daxil edin",
+    "enterFullname": "Zəhmət olmasa, ad və soyadı daxil edin",
+    "emailAtSymbol": "Zəhmət olmasa, `@` simvolundan istifadə edin",
+    "passwordMismatch": "Şifrəni düzgün təkrarlamadınız!",
+    "invalidCredentials": "E-poçt və ya şifrə yanlışdır.",
+    "emailTaken": "Bu e-poçt hesabı artıq qeydiyyatdan keçib."
+  },
+  "errors": {
+    "serverUnreachable": "Serverlə əlaqə qurulmadı",
+    "generic": "Xəta baş verdi!"
+  },
+  "login": {
+    "title": "Giriş",
+    "subtitle": "Hesabınıza daxil olun",
+    "forgotPassword": "Şifrənizi unutmusunuz?",
+    "submit": "Daxil ol",
+    "withGoogle": "Google ilə",
+    "withApple": "Apple ilə",
+    "noAccount": "Hesabınız yoxdur?",
+    "register": "Qeydiyyat"
+  },
+  "register": {
+    "title": "Qeydiyyat",
+    "subtitle": "Yeni hesab yaradın",
+    "submit": "Qeydiyyatdan keç",
+    "haveAccount": "Artıq hesabınız var?",
+    "login": "Daxil ol"
+  },
+  "home": {
+    "searchPlaceholder": "Restoran, yemək axtarın...",
+    "deliveryAddress": "Çatdırılma ünvanı"
+  },
+  "profile": {
+    "personalInfo": "Şəxsi məlumatlarım",
+    "addresses": "Ünvanlarım",
+    "paymentMethods": "Ödəniş metodları",
+    "orderHistory": "Sifariş tarixçəsi",
+    "favorites": "Sevimlilər",
+    "settings": "Parametrlər",
+    "logout": "Çıxış"
+  },
+  "address": {
+    "titlePlaceholder": "Başlıq (Ev, İş...)",
+    "detailsPlaceholder": "(Mənzil, Mərtəbə, Domofon)",
+    "streetPlaceholder": "Küçə",
+    "useCurrentLocation": "Cari konumu istifadə et",
+    "addAddress": "Ünvanı əlavə et",
+    "permissionDeniedTitle": "İcazə yoxdur",
+    "permissionDeniedMessage": "Ayarlardan konumu aktivləşdirin",
+    "gpsOffTitle": "GPS söndürülüb",
+    "gpsOffMessage": "Telefonda konumu aktiv edin.",
+    "locationFailed": "Konum alınmadı",
+    "requiredFields": "Başlıq, ünvan və konum mütləqdir"
+  },
+  "cart": {
+    "sectionTotal": "Ümumi: {{amount}}",
+    "totalPrice": "Ümumi qiymət",
+    "order": "Sifariş et"
+  },
+  "order": {
+    "title": "Sifariş",
+    "deliveryAddress": "Çatdırılma ünvanı",
+    "noAddress": "Ünvan seçilməyib",
+    "deliveryTime": "Çatdırılma vaxtı",
+    "deliveryNow": "İndi (20–30 dəq)",
+    "paymentMethod": "Ödəniş metodu",
+    "payByCard": "Kartla ödəniş",
+    "note": "Sifariş qeydi",
+    "notePlaceholder": "Məsələn: qapını zəng vurun...",
+    "total": "Cəmi məbləğ",
+    "confirm": "Sifarişi təsdiqlə",
+    "successTitle": "Ödəniş uğurlu oldu!",
+    "successMessage": "Sifarişiniz qəbul edildi və tezliklə hazırlanacaq.",
+    "paid": "Ödənilən məbləğ",
+    "ok": "Tamam"
+  }
+}

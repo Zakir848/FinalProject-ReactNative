@@ -1,0 +1,109 @@
+{
+  "common": {
+    "error": "Error",
+    "cancel": "Cancel",
+    "allow": "Allow",
+    "or": "or"
+  },
+  "tabs": {
+    "home": "Home",
+    "favorite": "Favorites",
+    "orders": "Orders",
+    "profile": "Profile"
+  },
+  "screens": {
+    "favorite": "Favorites",
+    "orders": "Orders",
+    "cart": "Cart",
+    "addresses": "My Addresses",
+    "payments": "My Payment Methods"
+  },
+  "splash": {
+    "subtitle": "FOOD DELIVERY & ORDERING"
+  },
+  "form": {
+    "email": "Email",
+    "password": "Password",
+    "repeatPassword": "Repeat password",
+    "fullname": "Full name"
+  },
+  "validation": {
+    "fillAll": "Please fill in all fields",
+    "enterEmail": "Please enter your email",
+    "enterPassword": "Please enter your password",
+    "enterFullname": "Please enter your full name",
+    "emailAtSymbol": "Please use the `@` symbol",
+    "passwordMismatch": "Passwords do not match!",
+    "invalidCredentials": "Email or password is incorrect.",
+    "emailTaken": "This email is already registered."
+  },
+  "errors": {
+    "serverUnreachable": "Could not connect to the server",
+    "generic": "Something went wrong!"
+  },
+  "login": {
+    "title": "Sign In",
+    "subtitle": "Sign in to your account",
+    "forgotPassword": "Forgot your password?",
+    "submit": "Sign in",
+    "withGoogle": "With Google",
+    "withApple": "With Apple",
+    "noAccount": "Don't have an account?",
+    "register": "Sign up"
+  },
+  "register": {
+    "title": "Sign Up",
+    "subtitle": "Create a new account",
+    "submit": "Sign up",
+    "haveAccount": "Already have an account?",
+    "login": "Sign in"
+  },
+  "home": {
+    "searchPlaceholder": "Search restaurants, food...",
+    "deliveryAddress": "Delivery address"
+  },
+  "profile": {
+    "personalInfo": "Personal information",
+    "addresses": "My addresses",
+    "paymentMethods": "Payment methods",
+    "orderHistory": "Order history",
+    "favorites": "Favorites",
+    "settings": "Settings",
+    "logout": "Log out"
+  },
+  "address": {
+    "titlePlaceholder": "Title (Home, Work...)",
+    "detailsPlaceholder": "(Apartment, Floor, Intercom)",
+    "streetPlaceholder": "Street",
+    "useCurrentLocation": "Use current location",
+    "addAddress": "Add address",
+    "permissionDeniedTitle": "Permission denied",
+    "permissionDeniedMessage": "Enable location access in Settings",
+    "gpsOffTitle": "GPS is off",
+    "gpsOffMessage": "Turn on location on your phone.",
+    "locationFailed": "Could not get location",
+    "requiredFields": "Title, address and location are required"
+  },
+  "cart": {
+    "sectionTotal": "Total: {{amount}}",
+    "totalPrice": "Total price",
+    "order": "Place order"
+  },
+  "order": {
+    "title": "Order",
+    "deliveryAddress": "Delivery address",
+    "noAddress": "No address selected",
+    "deliveryTime": "Delivery time",
+    "deliveryNow": "Now (20–30 min)",
+    "paymentMethod": "Payment method",
+    "payByCard": "Pay by card",
+    "note": "Order note",
+    "notePlaceholder": "E.g.: ring the doorbell...",
+    "total": "Total amount",
+    "confirm": "Confirm order",
+    "successTitle": "Payment successful!",
+    "successMessage": "Your order has been received and will be prepared soon.",
+    "paid": "Amount paid",
+    "ok": "OK"
+  }
+}
