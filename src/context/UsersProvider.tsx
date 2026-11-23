@@ -13,7 +13,7 @@ import { getToken, removeToken, saveToken } from "@/api/authStorage";
 import { generateToken } from "@/api/token";
 import { router } from "expo-router";
 import { Alert } from "react-native";
-import { Address } from "@/types/types";
+import { Address, ProfileUpdate } from "@/types/types";
 import { useTranslation } from "react-i18next";
 
 type Session = {
@@ -41,6 +41,7 @@ interface UsersContextInterface {
   handleLogout: () => void;
   isLoading: boolean;
   handleRegister: (data: User) => void;
+  updateProfile: (data: ProfileUpdate) => Promise<boolean>;
   address: Address[];
   setAddress: (address: Address[]) => void;
 }
@@ -98,7 +99,10 @@ export function UsersProvider({ children }: { children: ReactNode }) {
   const handleLogin = async (data: Login) => {
     try {
       const response = await client.get("/users", {
-        params: { email: data.email.trim(), password: data.password },
+        params: {
+          email: data.email.trim().toLowerCase(),
+          password: data.password,
+        },
       });
 
       if (response.data.length === 0) {
@@ -123,7 +127,10 @@ export function UsersProvider({ children }: { children: ReactNode }) {
         return;
       }
 
-      const response = await client.post("/users", data);
+      const response = await client.post("/users", {
+        ...data,
+        email: data.email.trim().toLowerCase(),
+      });
 
       if (!response) {
         throw new Error("Response da error var");
@@ -132,6 +139,38 @@ export function UsersProvider({ children }: { children: ReactNode }) {
       router.replace("/login");
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const updateProfile = async (data: ProfileUpdate) => {
+    if (!currentUser) return false;
+
+    try {
+      const email = data.email.trim().toLowerCase();
+
+      // E-poçt başqa istifadəçiyə məxsusdursa dəyişməyə icazə verilmir
+      if (email !== currentUser.email?.trim().toLowerCase()) {
+        const { data: users } = await client.get("/users", {
+          params: { email },
+        });
+        if (users.some((u: User) => u.id !== currentUser.id)) {
+          Alert.alert(t("common.error"), t("validation.emailTaken"));
+          return false;
+        }
+      }
+
+      const { data: updated } = await client.patch(
+        `/users/${currentUser.id}`,
+        { fullname: data.fullname.trim(), email, imageUrl: data.imageUrl },
+      );
+
+      const { password, ...safeUser } = updated;
+      setCurrentUser(safeUser);
+      return true;
+    } catch (error) {
+      console.log("update profile error:", error);
+      Alert.alert(t("common.error"), t("errors.serverUnreachable"));
+      return false;
     }
   };
 
@@ -155,6 +194,7 @@ export function UsersProvider({ children }: { children: ReactNode }) {
         handleLogin,
         handleLogout,
         handleRegister,
+        updateProfile,
       }}
     >
       {children}

@@ -1,4 +1,5 @@
 import { Colors } from "@/constants/theme";
+import useFavorites from "@/context/FavoritesProvider";
 import { Restaurant } from "@/models/restaurants.models";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -9,6 +10,9 @@ type Props = {
 };
 
 export default function RestaurantCard({ item }: Props) {
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const favorite = isFavorite(item.id);
+
   return (
     <Pressable
       style={styles.card}
@@ -24,11 +28,19 @@ export default function RestaurantCard({ item }: Props) {
       ) : (
         <Ionicons name="image" size={25} />
       )}
+      <Pressable
+        style={styles.heartBtn}
+        hitSlop={10}
+        onPress={() => toggleFavorite(item.id)}
+      >
+        <Ionicons
+          name={favorite ? "heart" : "heart-outline"}
+          size={22}
+          color={favorite ? Colors.favorite : Colors.text}
+        />
+      </Pressable>
       <View style={styles.content}>
         <Text style={styles.name}>{item?.name}</Text>
-        <View style={styles.row}>
-          <Text>{item.name}</Text>
-        </View>
       </View>
     </Pressable>
   );
@@ -47,6 +59,14 @@ const styles = StyleSheet.create({
     minHeight: 150,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
+  },
+  heartBtn: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    backgroundColor: Colors.background,
+    borderRadius: 20,
+    padding: 7,
   },
   content: {
     padding: 10,

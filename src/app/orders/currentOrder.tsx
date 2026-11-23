@@ -1,11 +1,14 @@
+import { client } from "@/api/authContext";
 import Header from "@/components/header";
 import { Colors } from "@/constants/theme";
-import useFood from "@/context/FoodsProvider";
+import useFood, { createAt } from "@/context/FoodsProvider";
 import useUsers from "@/context/UsersProvider";
+import { Cart } from "@/models/foods.models";
+import { Order } from "@/models/orders.models";
 import { Address } from "@/types/types";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { router, useFocusEffect } from "expo-router";
+import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { ComponentProps, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -52,16 +55,49 @@ function OptionRow({ icon, label, loading, onPress }: OptionRowProps) {
 
 export default function CurrentOrder() {
   const { t } = useTranslation();
+  const { restaurantId } = useLocalSearchParams<{ restaurantId: string }>();
   const { address, currentUser } = useUsers();
-  const { carts } = useFood();
+  const { carts, createOrder, restaurants, clearRestaurantCart } = useFood();
   const [loading, setLoading] = useState(true);
   const [currentAddress, setCurrentAddress] = useState<Address | null>(null);
   const [note, setNote] = useState("");
   const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [paidAmount, setPaidAmount] = useState("0.00");
 
-  const handleConfirm = async () => {
-    // TODO: sifarişi buraya əlavə et (orders-ə yazmaq)
+  const handleConfirm = async (items: Cart[]) => {
+    if (!currentUser || items.length === 0) return;
+    const restaurant = restaurants.find((r) => r.id === items[0].restaurantId);
+    const orderId = Date.now().toString();
+
+
+    const orderItem: Order["orderItem"] = items.map((c) => ({
+      id: c.id,
+      orderId,
+      restaurantId: c.restaurantId,
+      foodId: c.foodId,
+      foodName: c.name,
+      name: c.name,
+      quantity: c.quantity,
+      price: c.price,
+    }));
+
+    const newOrder: Order = {
+      id: orderId,
+      userEmail: currentUser.email.trim().toLowerCase(),
+      restaurantName: restaurant?.name ?? "",
+      totalPrice: Number(
+        items.reduce((sum, c) => sum + c.price * c.quantity, 0).toFixed(2),
+      ),
+      status: "pending",
+      deliveryTime: createAt,
+      orderItem,
+    };
+    await createOrder(newOrder);
+    setPaidAmount(newOrder.totalPrice.toFixed(2));
     setPaymentSuccess(true);
+
+    // Sifariş olunan restoranın məhsulları səbətdən çıxarılır, digərləri qalır
+    await clearRestaurantCart(currentUser.id, items[0].restaurantId);
   };
 
   const handleCloseSuccess = () => {
@@ -69,7 +105,10 @@ export default function CurrentOrder() {
     router.back();
   };
 
-  const userCart = carts.filter((f) => f.userId == currentUser?.id);
+  // Yalnız səbətdə seçilmiş restoranın məhsulları sifariş olunur
+  const userCart = carts.filter(
+    (f) => f.userId == currentUser?.id && f.restaurantId == restaurantId,
+  );
   const totalPrice = userCart
     .reduce((sum, item) => sum + item.price * item.quantity, 0)
     .toFixed(2);
@@ -152,7 +191,7 @@ export default function CurrentOrder() {
         <TouchableOpacity
           style={styles.confirmButton}
           activeOpacity={0.8}
-          onPress={handleConfirm}
+          onPress={() => handleConfirm(userCart)}
         >
           <Text style={styles.confirmText}>{t("order.confirm")}</Text>
         </TouchableOpacity>
@@ -170,12 +209,10 @@ export default function CurrentOrder() {
               <Ionicons name="checkmark" size={44} color={Colors.white} />
             </View>
             <Text style={styles.modalTitle}>{t("order.successTitle")}</Text>
-            <Text style={styles.modalMessage}>
-              {t("order.successMessage")}
-            </Text>
+            <Text style={styles.modalMessage}>{t("order.successMessage")}</Text>
             <View style={styles.modalAmountRow}>
               <Text style={styles.modalAmountLabel}>{t("order.paid")}</Text>
-              <Text style={styles.modalAmount}>{totalPrice} ₼</Text>
+              <Text style={styles.modalAmount}>{paidAmount} ₼</Text>
             </View>
             <TouchableOpacity
               style={styles.modalButton}

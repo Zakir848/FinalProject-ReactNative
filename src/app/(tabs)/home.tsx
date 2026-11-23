@@ -6,7 +6,7 @@ import useUsers from "@/context/UsersProvider";
 import { useUserCart } from "@/hooks/useUserCart";
 import { Entypo, Feather, Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
-import React from "react";
+import React, { useMemo, useState } from "react";
 import {
   FlatList,
   StatusBar,
@@ -23,6 +23,15 @@ export default function home() {
   const { currentUser } = useUsers();
   const { count } = useUserCart();
   const { t } = useTranslation();
+  const [search, setSearch] = useState("");
+
+  const filteredRestaurants = useMemo(() => {
+    const query = search.trim().toLocaleLowerCase();
+    if (!query) return restaurants;
+    return restaurants.filter((r) =>
+      r.name?.toLocaleLowerCase().includes(query),
+    );
+  }, [restaurants, search]);
 
   return (
     <View style={styles.container}>
@@ -33,7 +42,19 @@ export default function home() {
         <TextInput
           placeholder={t("home.searchPlaceholder")}
           style={styles.searchInput}
+          value={search}
+          onChangeText={setSearch}
+          autoCorrect={false}
+          returnKeyType="search"
         />
+        {search.length > 0 && (
+          <TouchableOpacity
+            style={styles.clearBtn}
+            onPress={() => setSearch("")}
+          >
+            <Ionicons name="close-circle" size={20} color={Colors.textDisabled} />
+          </TouchableOpacity>
+        )}
       </View>
       <View style={styles.cartWrapper}>
         <TouchableOpacity
@@ -51,10 +72,16 @@ export default function home() {
       </View>
 
       <FlatList
-        data={restaurants}
+        data={filteredRestaurants}
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
         renderItem={({ item }) => <RestaurantCard item={item} />}
+        ListEmptyComponent={
+          search.trim() ? (
+            <Text style={styles.emptyText}>{t("home.noResults")}</Text>
+          ) : undefined
+        }
       />
     </View>
   );
@@ -85,6 +112,15 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     marginHorizontal: 5,
+  },
+  clearBtn: {
+    paddingHorizontal: 10,
+  },
+  emptyText: {
+    textAlign: "center",
+    marginTop: 40,
+    color: Colors.textSecondary,
+    fontSize: 15,
   },
   cartWrapper: {
     position: "absolute",

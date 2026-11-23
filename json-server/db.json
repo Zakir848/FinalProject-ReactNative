@@ -3,14 +3,14 @@
     {
       "id": "O7DQ_v9BdO4",
       "fullname": "Zakir Abılov",
-      "email": "Zakir@gmail.com",
+      "email": "zakir@gmail.com",
       "password": "Zakir2005@",
-      "imageUrl": "https://img.magnific.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
+      "imageUrl": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FFinalProject-8e203b22-57b7-4fe1-8284-73f1be54982f/ImagePicker/489b4005-b784-4edf-8d87-394288235cab.jpeg"
     },
     {
       "id": "GmNe17WC4Do",
       "fullname": "Zako",
-      "email": "Zakirabilov023@gmail.com",
+      "email": "zakirabilov023@gmail.com",
       "password": "Zako123",
       "imageUrl": ""
     }
@@ -173,96 +173,341 @@
       ]
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "id": "zdGsStG-TOs",
+      "userEmail": "zakir@gmail.com",
+      "restaurantName": "Burger King",
+      "totalPrice": 119.7,
+      "status": "pending",
+      "deliveryTime": "\n23-10-2026 8:44\n",
+      "orderItem": [
+        {
+          "id": "t6V8XRqUnsE",
+          "orderId": "1795409098414",
+          "restaurantId": "3",
+          "foodId": "11",
+          "foodName": "Whopper",
+          "name": "Whopper",
+          "quantity": 4,
+          "price": 11.9
+        },
+        {
+          "id": "j4i8um1Nq7U",
+          "orderId": "1795409098414",
+          "restaurantId": "2",
+          "foodId": "9",
+          "foodName": "McChicken",
+          "name": "McChicken",
+          "quantity": 3,
+          "price": 7.5
+        },
+        {
+          "id": "QUrkL6aZE0M",
+          "orderId": "1795409098414",
+          "restaurantId": "2",
+          "foodId": "7",
+          "foodName": "Cheeseburger",
+          "name": "Cheeseburger",
+          "quantity": 2,
+          "price": 4.9
+        },
+        {
+          "id": "MD8IpviNjwQ",
+          "orderId": "1795409098414",
+          "restaurantId": "2",
+          "foodId": "6",
+          "foodName": "Big Mac",
+          "name": "Big Mac",
+          "quantity": 1,
+          "price": 9.5
+        },
+        {
+          "id": "yZLAiIiyVm4",
+          "orderId": "1795409098414",
+          "restaurantId": "2",
+          "foodId": "8",
+          "foodName": "Chicken McNuggets",
+          "name": "Chicken McNuggets",
+          "quantity": 2,
+          "price": 7.9
+        },
+        {
+          "id": "9P6dqcRq9xY",
+          "orderId": "1795409098414",
+          "restaurantId": "3",
+          "foodId": "14",
+          "foodName": "Onion Rings",
+          "name": "Onion Rings",
+          "quantity": 1,
+          "price": 5.5
+        },
+        {
+          "id": "RUCe75uL1io",
+          "orderId": "1795409098414",
+          "restaurantId": "2",
+          "foodId": "10",
+          "foodName": "French Fries",
+          "name": "French Fries",
+          "quantity": 1,
+          "price": 4.5
+        },
+        {
+          "id": "BO4OOdmpGYo",
+          "orderId": "1795409098414",
+          "restaurantId": "2",
+          "foodId": "10",
+          "foodName": "French Fries",
+          "name": "French Fries",
+          "quantity": 1,
+          "price": 4.5
+        }
+      ]
+    },
+    {
+      "id": "Crp1N7803A4",
+      "userEmail": "zakir@gmail.com",
+      "restaurantName": "Burger King",
+      "totalPrice": 119.7,
+      "status": "pending",
+      "deliveryTime": "\n23-10-2026 8:46\n",
+      "orderItem": [
+        {
+          "id": "t6V8XRqUnsE",
+          "orderId": "1795409196951",
+          "restaurantId": "3",
+          "foodId": "11",
+          "foodName": "Whopper",
+          "name": "Whopper",
+          "quantity": 4,
+          "price": 11.9
+        },
+        {
+          "id": "j4i8um1Nq7U",
+          "orderId": "1795409196951",
+          "restaurantId": "2",
+          "foodId": "9",
+          "foodName": "McChicken",
+          "name": "McChicken",
+          "quantity": 3,
+          "price": 7.5
+        },
+        {
+          "id": "QUrkL6aZE0M",
+          "orderId": "1795409196951",
+          "restaurantId": "2",
+          "foodId": "7",
+          "foodName": "Cheeseburger",
+          "name": "Cheeseburger",
+          "quantity": 2,
+          "price": 4.9
+        },
+        {
+          "id": "MD8IpviNjwQ",
+          "orderId": "1795409196951",
+          "restaurantId": "2",
+          "foodId": "6",
+          "foodName": "Big Mac",
+          "name": "Big Mac",
+          "quantity": 1,
+          "price": 9.5
+        },
+        {
+          "id": "yZLAiIiyVm4",
+          "orderId": "1795409196951",
+          "restaurantId": "2",
+          "foodId": "8",
+          "foodName": "Chicken McNuggets",
+          "name": "Chicken McNuggets",
+          "quantity": 2,
+          "price": 7.9
+        },
+        {
+          "id": "9P6dqcRq9xY",
+          "orderId": "1795409196951",
+          "restaurantId": "3",
+          "foodId": "14",
+          "foodName": "Onion Rings",
+          "name": "Onion Rings",
+          "quantity": 1,
+          "price": 5.5
+        },
+        {
+          "id": "RUCe75uL1io",
+          "orderId": "1795409196951",
+          "restaurantId": "2",
+          "foodId": "10",
+          "foodName": "French Fries",
+          "name": "French Fries",
+          "quantity": 1,
+          "price": 4.5
+        },
+        {
+          "id": "BO4OOdmpGYo",
+          "orderId": "1795409196951",
+          "restaurantId": "2",
+          "foodId": "10",
+          "foodName": "French Fries",
+          "name": "French Fries",
+          "quantity": 1,
+          "price": 4.5
+        }
+      ]
+    },
+    {
+      "id": "tDDACTnbQk0",
+      "userEmail": "zakir@gmail.com",
+      "restaurantName": "Burger King",
+      "totalPrice": 119.7,
+      "status": "delivered",
+      "deliveryTime": "\n23-10-2026 8:48\n",
+      "orderItem": [
+        {
+          "id": "t6V8XRqUnsE",
+          "orderId": "1795409724104",
+          "restaurantId": "3",
+          "foodId": "11",
+          "foodName": "Whopper",
+          "name": "Whopper",
+          "quantity": 4,
+          "price": 11.9
+        },
+        {
+          "id": "j4i8um1Nq7U",
+          "orderId": "1795409724104",
+          "restaurantId": "2",
+          "foodId": "9",
+          "foodName": "McChicken",
+          "name": "McChicken",
+          "quantity": 3,
+          "price": 7.5
+        },
+        {
+          "id": "QUrkL6aZE0M",
+          "orderId": "1795409724104",
+          "restaurantId": "2",
+          "foodId": "7",
+          "foodName": "Cheeseburger",
+          "name": "Cheeseburger",
+          "quantity": 2,
+          "price": 4.9
+        },
+        {
+          "id": "MD8IpviNjwQ",
+          "orderId": "1795409724104",
+          "restaurantId": "2",
+          "foodId": "6",
+          "foodName": "Big Mac",
+          "name": "Big Mac",
+          "quantity": 1,
+          "price": 9.5
+        },
+        {
+          "id": "yZLAiIiyVm4",
+          "orderId": "1795409724104",
+          "restaurantId": "2",
+          "foodId": "8",
+          "foodName": "Chicken McNuggets",
+          "name": "Chicken McNuggets",
+          "quantity": 2,
+          "price": 7.9
+        },
+        {
+          "id": "9P6dqcRq9xY",
+          "orderId": "1795409724104",
+          "restaurantId": "3",
+          "foodId": "14",
+          "foodName": "Onion Rings",
+          "name": "Onion Rings",
+          "quantity": 1,
+          "price": 5.5
+        },
+        {
+          "id": "RUCe75uL1io",
+          "orderId": "1795409724104",
+          "restaurantId": "2",
+          "foodId": "10",
+          "foodName": "French Fries",
+          "name": "French Fries",
+          "quantity": 1,
+          "price": 4.5
+        },
+        {
+          "id": "BO4OOdmpGYo",
+          "orderId": "1795409724104",
+          "restaurantId": "2",
+          "foodId": "10",
+          "foodName": "French Fries",
+          "name": "French Fries",
+          "quantity": 1,
+          "price": 4.5
+        }
+      ]
+    },
+    {
+      "id": "f_K81mH0NpA",
+      "userEmail": "zakir@gmail.com",
+      "restaurantName": "McDonald's",
+      "totalPrice": 20.3,
+      "status": "pending",
+      "deliveryTime": "\n23-10-2026 9:58\n",
+      "orderItem": [
+        {
+          "id": "vVUAdlsw_VU",
+          "orderId": "1795413601421",
+          "restaurantId": "2",
+          "foodId": "8",
+          "foodName": "Chicken McNuggets",
+          "name": "Chicken McNuggets",
+          "quantity": 1,
+          "price": 7.9
+        },
+        {
+          "id": "K1wpWpNG63w",
+          "orderId": "1795413601421",
+          "restaurantId": "2",
+          "foodId": "9",
+          "foodName": "McChicken",
+          "name": "McChicken",
+          "quantity": 1,
+          "price": 7.5
+        },
+        {
+          "id": "PIPfVzAWVPY",
+          "orderId": "1795413601421",
+          "restaurantId": "2",
+          "foodId": "7",
+          "foodName": "Cheeseburger",
+          "name": "Cheeseburger",
+          "quantity": 1,
+          "price": 4.9
+        }
+      ]
+    }
+  ],
   "comments": [],
   "carts": [
     {
       "userId": "O7DQ_v9BdO4",
-      "restaurantId": "3",
-      "foodId": "11",
-      "name": "Whopper",
-      "category": "Burger",
-      "imageUrl": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
-      "price": 11.9,
-      "quantity": 4,
-      "id": "t6V8XRqUnsE"
-    },
-    {
-      "userId": "O7DQ_v9BdO4",
-      "restaurantId": "2",
-      "foodId": "9",
-      "name": "McChicken",
-      "category": "Burger",
-      "imageUrl": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600",
-      "price": 7.5,
-      "quantity": 3,
-      "id": "j4i8um1Nq7U"
-    },
-    {
-      "userId": "O7DQ_v9BdO4",
-      "restaurantId": "2",
-      "foodId": "7",
-      "name": "Cheeseburger",
-      "category": "Burger",
-      "imageUrl": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600",
-      "price": 4.9,
-      "quantity": 2,
-      "id": "QUrkL6aZE0M"
-    },
-    {
-      "userId": "O7DQ_v9BdO4",
-      "restaurantId": "2",
-      "foodId": "6",
-      "name": "Big Mac",
-      "category": "Burger",
-      "imageUrl": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
-      "price": 9.5,
-      "quantity": 1,
-      "id": "MD8IpviNjwQ"
-    },
-    {
-      "userId": "O7DQ_v9BdO4",
-      "restaurantId": "2",
-      "foodId": "8",
-      "name": "Chicken McNuggets",
+      "restaurantId": "1",
+      "foodId": "2",
+      "name": "Hot Wings",
       "category": "Chicken",
-      "imageUrl": "https://images.unsplash.com/photo-1562967914-608f82629710?w=600",
-      "price": 7.9,
-      "quantity": 2,
-      "id": "yZLAiIiyVm4"
+      "imageUrl": "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=600",
+      "price": 10.5,
+      "quantity": 1,
+      "id": "S50J9D6-wRQ"
     },
     {
       "userId": "O7DQ_v9BdO4",
-      "restaurantId": "3",
-      "foodId": "14",
-      "name": "Onion Rings",
-      "category": "Sides",
-      "imageUrl": "https://images.unsplash.com/photo-1639024471283-03518883512d?w=600",
-      "price": 5.5,
+      "restaurantId": "1",
+      "foodId": "3",
+      "name": "Twister",
+      "category": "Wrap",
+      "imageUrl": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=600",
+      "price": 7.5,
       "quantity": 1,
-      "id": "9P6dqcRq9xY"
-    },
-    {
-      "userId": "O7DQ_v9BdO4",
-      "restaurantId": "2",
-      "foodId": "10",
-      "name": "French Fries",
-      "category": "Sides",
-      "imageUrl": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600",
-      "price": 4.5,
-      "quantity": 1,
-      "id": "RUCe75uL1io"
-    },
-    {
-      "userId": "O7DQ_v9BdO4",
-      "restaurantId": "2",
-      "foodId": "10",
-      "name": "French Fries",
-      "category": "Sides",
-      "imageUrl": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600",
-      "price": 4.5,
-      "quantity": 1,
-      "id": "BO4OOdmpGYo"
+      "id": "7GqUZlO__Mw"
     }
   ],
   "addresses": [

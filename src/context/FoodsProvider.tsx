@@ -1,24 +1,24 @@
 import { client } from "@/api/authContext";
 import {
-    clearCartSQLite,
-    decreaseQuantity,
-    deleteFromCartByFoodId,
-    getAllCarts,
-    insertCart,
-    updateQunatity,
+  clearCartSQLite,
+  decreaseQuantity,
+  deleteFromCartByFoodId,
+  insertCart,
+  updateQunatity,
 } from "@/db/database";
 import { Comment } from "@/models/comments.models";
 import { Cart } from "@/models/foods.models";
 import { Order, OrderItem } from "@/models/orders.models";
 import { Restaurant } from "@/models/restaurants.models";
-import axios from "axios";
+import { pad } from "@/utils/format";
 import {
-    createContext,
-    ReactNode,
-    useContext,
-    useEffect,
-    useState,
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
 } from "react";
+import useUsers from "./UsersProvider";
 
 interface FoodContextInterface {
   restaurants: Restaurant[];
@@ -27,6 +27,7 @@ interface FoodContextInterface {
   orderItem: OrderItem[];
   carts: Cart[];
   clearCart: (userId: string) => void;
+  clearRestaurantCart: (userId: string, restaurantId: string) => void;
   createOrder: (data: Order) => void;
   setOrderItem: (data: OrderItem[]) => void;
   addCart: (data: Cart) => void;
@@ -35,8 +36,13 @@ interface FoodContextInterface {
 }
 
 const FoodContext = createContext<FoodContextInterface | undefined>(undefined);
+const date = new Date();
+export const createAt = `
+${pad(date.getDate())}-${pad(date.getMonth() + 1)}-${date.getFullYear()} ${pad(date.getHours())}:${pad(date.getMinutes())}
+`;
 
 export function FoodsProvider({ children }: { children: ReactNode }) {
+  const { currentUser } = useUsers();
   const [restaurants, setRestourants] = useState<Restaurant[]>([]);
 
   const [orders, setOrders] = useState<Order[]>([]);
@@ -57,33 +63,56 @@ export function FoodsProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     (async () => {
-      await loadData("restaurants", setRestourants);
-      await loadData("carts", setCart);
-      await loadData("orders", setOrders);
-      await loadData("comments", setComments);
-      const get = await getAllCarts();
+      await loadData("/restaurants", setRestourants);
+      await loadData("/carts", setCart);
+      await loadData("/comments", setComments);
     })();
   }, []);
 
+  const userEmail = currentUser?.email?.trim().toLowerCase();
+
+  useEffect(() => {
+    if (!userEmail) {
+      setOrders([]);
+      return;
+    }
+
+    client
+      .get<Order[]>("/orders", { params: { userEmail } })
+      .then(({ data }) =>
+        setOrders(
+          data.filter((o) => o.userEmail?.trim().toLowerCase() === userEmail),
+        ),
+      )
+      .catch((error) => console.log(error));
+  }, [userEmail]);
+
   const clearCart = async (userId: string): Promise<void> => {
     try {
-      const userCarts: Cart[] = await client.get(`/carts?userId=${userId}`);
+      const { data: userCarts } = await client.get<Cart[]>(
+        `/carts?userId=${userId}`,
+      );
 
-      if (userCarts.length <= 0) {
-        return;
-      }
-
-      const deletePromise = userCarts.map((item) => {
-        axios.delete(`/carts/${item.id}`);
-      });
-
-      await Promise.all(deletePromise);
+      await Promise.all(
+        userCarts.map((item) => client.delete(`/carts/${item.id}`)),
+      );
       await clearCartSQLite();
 
-      setCart([]);
+      setCart((prev) => prev.filter((item) => item.userId !== userId));
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const createCartItem = async (data: Cart) => {
+    const { data: created } = await client.post("/carts", {
+      ...data,
+      quantity: 1,
+    });
+    const { id, ...local } = created;
+
+    await insertCart(local);
+    setCart((prev) => [...prev, created]);
   };
 
   const addCart = async (data: Cart) => {
@@ -107,21 +136,34 @@ export function FoodsProvider({ children }: { children: ReactNode }) {
       await updateQunatity(exists.userId, exists.foodId);
 
       setCart((prev) =>
-        prev.map((item) => (item.id === updated.id ? updated.data : item)),
+        prev.map((item) => (item.id === updated.id ? updated : item)),
       );
       return;
     }
-    console.log("buradayam");
+    await createCartItem(data);
+  };
 
-    const { data: created } = await client.post("/carts", {
-      ...data,
-      quantity: 1,
-    });
-    console.log(created);
-    const { id, ...local } = created;
+  const clearRestaurantCart = async (userId: string, restaurantId: string) => {
+    const items = carts.filter(
+      (c) => c.userId === userId && c.restaurantId === restaurantId,
+    );
 
-    await insertCart(local);
-    setCart((prev) => [...prev, local]);
+    try {
+      await Promise.all(
+        items.map((item) => client.delete(`/carts/${item.id}`)),
+      );
+      await Promise.all(
+        items.map((item) => deleteFromCartByFoodId(item.foodId)),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+
+    setCart((prev) =>
+      prev.filter(
+        (c) => !(c.userId === userId && c.restaurantId === restaurantId),
+      ),
+    );
   };
 
   const decreaseFood = async (id: string) => {
@@ -169,25 +211,21 @@ export function FoodsProvider({ children }: { children: ReactNode }) {
     setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const createOrder = async (data: Order) => {};
-
-  const addOrderItem = async (data: OrderItem) => {
+  const createOrder = async (data: Order) => {
     if (!data) {
-      console.log("addOrder xeta");
+      return;
     }
 
-    setOrderItem((prev) => {
-      const exists = prev.some((item) => item.foodId == data.id);
-      if (exists) {
-        prev.map((item) =>
-          item.foodId == data.foodId
-            ? { ...item, quantity: item.quantity + 1 }
-            : item,
-        );
-      }
+    const order: Order = {
+      ...data,
+      userEmail: data.userEmail.trim().toLowerCase(),
+      deliveryTime: String(createAt),
+      status: "pending",
+    };
 
-      return [...prev, { ...data, quantity: 1 }];
-    });
+    await client.post("/orders", order);
+
+    setOrders((prev) => [...prev, order]);
   };
 
   return (
@@ -199,6 +237,7 @@ export function FoodsProvider({ children }: { children: ReactNode }) {
         comments,
         carts,
         clearCart,
+        clearRestaurantCart,
         createOrder,
         setOrderItem,
         addCart,

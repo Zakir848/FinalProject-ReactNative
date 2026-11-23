@@ -65,6 +65,13 @@ export default function profile() {
   ];
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.editButton}
+        hitSlop={10}
+        onPress={() => router.push("/editProfile")}
+      >
+        <Ionicons name="pencil" size={20} color={Colors.background} />
+      </TouchableOpacity>
       <View style={styles.userInfo}>
         <View style={styles.avatar}>
           {currentUser?.imageUrl ? (
@@ -116,6 +123,18 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: StatusBar.currentHeight,
     backgroundColor: Colors.primaryDark,
+  },
+  editButton: {
+    position: "absolute",
+    top: (StatusBar.currentHeight ?? 0) + 12,
+    right: 16,
+    zIndex: 10,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    alignItems: "center",
+    justifyContent: "center",
   },
   userInfo: {
     justifyContent: "center",

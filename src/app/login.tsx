@@ -1,4 +1,5 @@
 import { client } from "@/api/authContext";
+import LanguageSelect from "@/components/languageSelect";
 import useUsers from "@/context/UsersProvider";
 import {
   FontAwesome5,
@@ -69,9 +70,12 @@ export default function login() {
       return;
     }
 
-    const user = await client.get(
-      `/users?email=${form.email}&password=${form.password}`,
-    );
+    const user = await client.get("/users", {
+      params: {
+        email: form.email.trim().toLowerCase(),
+        password: form.password,
+      },
+    });
 
     if (!user) {
       handleError("anyError", t("validation.invalidCredentials"));
@@ -110,6 +114,7 @@ export default function login() {
         style={styles.logo}
         resizeMode="cover"
       />
+      <LanguageSelect style={styles.languageSelect} />
       <View style={styles.content}>
         <View style={styles.titleBox}>
           <Text style={styles.title}>{t("login.title")}</Text>
@@ -269,6 +274,11 @@ const styles = StyleSheet.create({
   logo: {
     maxHeight: 200,
     width: "100%",
+  },
+  languageSelect: {
+    position: "absolute",
+    top: (StatusBar.currentHeight ?? 0) + 10,
+    right: 16,
   },
   textInput: {
     flex: 1,

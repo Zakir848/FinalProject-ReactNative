@@ -120,8 +120,8 @@ export const insertCart = async (items: any) => {
 
   await db?.runAsync(
     `INSERT INTO carts (userId,restaurantId,foodId,name,price,quantity,imageUrl,category) 
-     VALUES(?,?,?,?,?,?,?) 
-     ON CONFLICT (userId,foodId)
+     VALUES(?,?,?,?,?,?,?,?)
+     ON CONFLICT (restaurantId,foodId)
      DO UPDATE SET quantity = excluded.quantity
     `,
     [

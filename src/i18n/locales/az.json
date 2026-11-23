@@ -35,7 +35,22 @@
     "emailAtSymbol": "Zəhmət olmasa, `@` simvolundan istifadə edin",
     "passwordMismatch": "Şifrəni düzgün təkrarlamadınız!",
     "invalidCredentials": "E-poçt və ya şifrə yanlışdır.",
-    "emailTaken": "Bu e-poçt hesabı artıq qeydiyyatdan keçib."
+    "emailTaken": "Bu e-poçt hesabı artıq qeydiyyatdan keçib.",
+    "fullnameInvalid": "Ad və soyad yalnız hərflərdən ibarət olmalı və ən azı 2 sözdən ibarət olmalıdır",
+    "emailInvalid": "E-poçt formatı yanlışdır (məs: ad@example.com)",
+    "imageInvalid": "Yalnız JPG, PNG, WEBP və ya HEIC şəkillər qəbul olunur",
+    "imageTooLarge": "Şəklin ölçüsü 5 MB-dan çox olmamalıdır"
+  },
+  "editProfile": {
+    "title": "Profili redaktə et",
+    "changePhoto": "Şəkli dəyiş",
+    "fullname": "Ad və soyad",
+    "fullnamePlaceholder": "Məs: Əli Məmmədov",
+    "email": "E-poçt",
+    "save": "Yadda saxla",
+    "savedTitle": "Uğurlu",
+    "savedMessage": "Profil məlumatlarınız yeniləndi.",
+    "permissionDenied": "Şəkil seçmək üçün qalereyaya icazə verin."
   },
   "errors": {
     "serverUnreachable": "Serverlə əlaqə qurulmadı",
@@ -59,7 +74,8 @@
     "login": "Daxil ol"
   },
   "home": {
-    "searchPlaceholder": "Restoran, yemək axtarın...",
+    "searchPlaceholder": "Restoran axtar...",
+    "noResults": "Restoran tapılmadı",
     "deliveryAddress": "Çatdırılma ünvanı"
   },
   "profile": {
@@ -87,7 +103,16 @@
   "cart": {
     "sectionTotal": "Ümumi: {{amount}}",
     "totalPrice": "Ümumi qiymət",
-    "order": "Sifariş et"
+    "order": "Sifariş et",
+    "selectRestaurant": "Sifariş üçün restoran seçin"
+  },
+  "orderDetail": {
+    "title": "Sifariş detalları",
+    "items": "Məhsullar",
+    "date": "Tarix",
+    "total": "Cəmi məbləğ",
+    "cancelled": "Bu sifariş ləğv olunub",
+    "notFound": "Sifariş tapılmadı"
   },
   "order": {
     "title": "Sifariş",
@@ -105,5 +130,22 @@
     "successMessage": "Sifarişiniz qəbul edildi və tezliklə hazırlanacaq.",
     "paid": "Ödənilən məbləğ",
     "ok": "Tamam"
+  },
+  "favorite": {
+    "emptyTitle": "Sevimli restoran yoxdur",
+    "emptyMessage": "Restoran kartındakı ürək ikonuna toxunaraq sevimlilərə əlavə edin."
+  },
+  "orderHistory": {
+    "orderNo": "Sifariş #{{id}}",
+    "items": "{{count}} məhsul",
+    "total": "Cəmi",
+    "emptyTitle": "Hələ sifariş yoxdur",
+    "emptyMessage": "Verdiyiniz sifarişlər burada görünəcək.",
+    "status": {
+      "pending": "Gözləmədə",
+      "delivering": "Çatdırılır",
+      "delivered": "Çatdırıldı",
+      "cancel": "Ləğv olundu"
+    }
   }
 }

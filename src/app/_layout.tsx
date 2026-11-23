@@ -1,3 +1,4 @@
+import { FavoritesProvider } from "@/context/FavoritesProvider";
 import { FoodsProvider } from "@/context/FoodsProvider";
 import { UsersProvider } from "@/context/UsersProvider";
 import "@/i18n";
@@ -7,6 +8,7 @@ export default function _layout() {
   return (
     <UsersProvider>
       <FoodsProvider>
+        <FavoritesProvider>
         <Stack
           screenOptions={{
             headerShown: false,
@@ -22,10 +24,13 @@ export default function _layout() {
             options={{ statusBarStyle: "light" }}
           />
           <Stack.Screen name="address" />
+          <Stack.Screen name="editProfile" />
           <Stack.Screen name="payments" />
           <Stack.Screen name="orders/currentOrder" />
           <Stack.Screen name="orders/orderHistory" />
+          <Stack.Screen name="orders/[id]" />
         </Stack>
+        </FavoritesProvider>
       </FoodsProvider>
     </UsersProvider>
   );

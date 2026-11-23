@@ -21,7 +21,7 @@ export default function Cart() {
   const { currentUser } = useUsers();
   const { t } = useTranslation();
   const [collapsedSection, setCollapsedSection] = useState<string[]>([]);
-  console.log(currentUser);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const userCart = carts?.filter((f) => f.userId == currentUser?.id) || [];
 
@@ -39,6 +39,7 @@ export default function Cart() {
       const isCollapsed = collapsedSection?.includes(restaurant.name.trim());
 
       return {
+        restaurantId: restaurant.id,
         title: restaurant.name,
         sum: totalPrice,
         data: isCollapsed ? [] : restaurantItems,
@@ -46,10 +47,10 @@ export default function Cart() {
     })
     .filter((section) => section.sum > 0);
 
-  const totalPrice = userCart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
+  // Səbətdə tək restoran varsa avtomatik seçilir
+  const selectedSection =
+    sectionData.find((s) => s.restaurantId === selectedId) ??
+    (sectionData.length === 1 ? sectionData[0] : undefined);
 
   const handleShowRestaurantCard = (title: string) => {
     setCollapsedSection((prev) =>
@@ -71,15 +72,33 @@ export default function Cart() {
         }
         renderItem={({ item }) => <CartItem items={item} />}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
-        renderSectionHeader={({ section: { title, sum } }) => {
+        renderSectionHeader={({ section: { restaurantId, title, sum } }) => {
           const has = collapsedSection?.includes(title.trim());
+          const selected = selectedSection?.restaurantId === restaurantId;
           return (
-            <TouchableOpacity
-              style={styles.sectionHeaderRow}
-              onPress={() => handleShowRestaurantCard(title)}
+            <View
+              style={[
+                styles.sectionHeaderRow,
+                selected && styles.sectionHeaderSelected,
+              ]}
             >
-              <Text style={styles.sectionHeader}>{title}</Text>
-              <View style={styles.sectionTotalRow}>
+              <TouchableOpacity
+                style={styles.sectionSelect}
+                onPress={() => setSelectedId(restaurantId)}
+              >
+                <Ionicons
+                  name={selected ? "radio-button-on" : "radio-button-off"}
+                  size={22}
+                  color={selected ? Colors.primary : Colors.textDisabled}
+                />
+                <Text style={styles.sectionHeader} numberOfLines={1}>
+                  {title}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.sectionTotalRow}
+                onPress={() => handleShowRestaurantCard(title)}
+              >
                 <Text style={styles.sectionHeader}>
                   {t("cart.sectionTotal", { amount: sum.toFixed(2) })}
                 </Text>
@@ -87,22 +106,34 @@ export default function Cart() {
                   name={has ? "keyboard-arrow-down" : "keyboard-arrow-up"}
                   size={25}
                 />
-              </View>
-            </TouchableOpacity>
+              </TouchableOpacity>
+            </View>
           );
         }}
       />
       {userCart.length > 0 && (
         <View style={styles.footer}>
-          <View>
-            <Text style={styles.totalLabel}>{t("cart.totalPrice")}</Text>
-            <Text style={styles.totalValue}>{totalPrice.toFixed(2)}</Text>
+          <View style={styles.footerInfo}>
+            <Text style={styles.totalLabel} numberOfLines={1}>
+              {selectedSection
+                ? selectedSection.title
+                : t("cart.selectRestaurant")}
+            </Text>
+            <Text style={styles.totalValue}>
+              {(selectedSection?.sum ?? 0).toFixed(2)}
+            </Text>
           </View>
           <TouchableOpacity
-            style={styles.orderButton}
+            style={[
+              styles.orderButton,
+              !selectedSection && styles.orderButtonDisabled,
+            ]}
+            disabled={!selectedSection}
             onPress={() =>
+              selectedSection &&
               router.push({
                 pathname: "/orders/currentOrder",
+                params: { restaurantId: selectedSection.restaurantId },
               })
             }
           >
@@ -128,15 +159,40 @@ const styles = StyleSheet.create({
   sectionHeaderRow: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 12,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    backgroundColor: Colors.surface,
+  },
+  sectionHeaderSelected: {
+    borderColor: Colors.primary,
+    backgroundColor: Colors.primaryLight,
+  },
+  sectionSelect: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
   },
   sectionTotalRow: {
     flexDirection: "row",
-    alignItems: "flex-end",
+    alignItems: "center",
   },
   sectionHeader: {
     fontWeight: "bold",
     fontSize: 16,
-    marginTop: 10,
+    flexShrink: 1,
+  },
+  footerInfo: {
+    flex: 1,
+    marginRight: 12,
+  },
+  orderButtonDisabled: {
+    opacity: 0.4,
   },
   footer: {
     paddingBottom: StatusBar.currentHeight,

@@ -35,7 +35,22 @@
     "emailAtSymbol": "Please use the `@` symbol",
     "passwordMismatch": "Passwords do not match!",
     "invalidCredentials": "Email or password is incorrect.",
-    "emailTaken": "This email is already registered."
+    "emailTaken": "This email is already registered.",
+    "fullnameInvalid": "Full name must contain only letters and at least 2 words",
+    "emailInvalid": "Invalid email format (e.g. name@example.com)",
+    "imageInvalid": "Only JPG, PNG, WEBP or HEIC images are allowed",
+    "imageTooLarge": "Image size must not exceed 5 MB"
+  },
+  "editProfile": {
+    "title": "Edit profile",
+    "changePhoto": "Change photo",
+    "fullname": "Full name",
+    "fullnamePlaceholder": "E.g. John Smith",
+    "email": "Email",
+    "save": "Save",
+    "savedTitle": "Success",
+    "savedMessage": "Your profile has been updated.",
+    "permissionDenied": "Allow gallery access to choose a photo."
   },
   "errors": {
     "serverUnreachable": "Could not connect to the server",
@@ -59,7 +74,8 @@
     "login": "Sign in"
   },
   "home": {
-    "searchPlaceholder": "Search restaurants, food...",
+    "searchPlaceholder": "Search restaurants...",
+    "noResults": "No restaurants found",
     "deliveryAddress": "Delivery address"
   },
   "profile": {
@@ -87,7 +103,16 @@
   "cart": {
     "sectionTotal": "Total: {{amount}}",
     "totalPrice": "Total price",
-    "order": "Place order"
+    "order": "Place order",
+    "selectRestaurant": "Select a restaurant to order"
+  },
+  "orderDetail": {
+    "title": "Order details",
+    "items": "Items",
+    "date": "Date",
+    "total": "Total amount",
+    "cancelled": "This order has been cancelled",
+    "notFound": "Order not found"
   },
   "order": {
     "title": "Order",
@@ -105,5 +130,22 @@
     "successMessage": "Your order has been received and will be prepared soon.",
     "paid": "Amount paid",
     "ok": "OK"
+  },
+  "favorite": {
+    "emptyTitle": "No favorite restaurants",
+    "emptyMessage": "Tap the heart icon on a restaurant card to add it to favorites."
+  },
+  "orderHistory": {
+    "orderNo": "Order #{{id}}",
+    "items": "{{count}} items",
+    "total": "Total",
+    "emptyTitle": "No orders yet",
+    "emptyMessage": "Your orders will appear here.",
+    "status": {
+      "pending": "Pending",
+      "delivering": "On the way",
+      "delivered": "Delivered",
+      "cancel": "Cancelled"
+    }
   }
 }

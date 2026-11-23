@@ -14,6 +14,7 @@ import {
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import useUsers from "@/context/UsersProvider";
+import LanguageSelect from "@/components/languageSelect";
 import { useTranslation } from "react-i18next";
 import { client } from "@/api/authContext";
 
@@ -114,13 +115,11 @@ export default function register() {
       handleError("errorRepeatPassword", t("validation.passwordMismatch"));
       return;
     }
-    const { data: users } = await client.get("/users");
-    console.log(Array.isArray(users));
+    const { data: users } = await client.get("/users", {
+      params: { email: form.email.trim().toLowerCase() },
+    });
 
-    const user = users.some(
-      (user: { email: string }) =>
-        user.email.trim().toLowerCase() === form.email.trim().toLowerCase(),
-    );
+    const user = users.length > 0;
 
     if (user) {
       handleError("anyError", t("validation.emailTaken"));
@@ -276,6 +275,7 @@ export default function register() {
           </View>
         </View>
       </ScrollView>
+      <LanguageSelect style={styles.languageSelect} />
     </KeyboardAvoidingView>
   );
 }
@@ -295,6 +295,11 @@ const styles = StyleSheet.create({
   logo: {
     maxHeight: 200,
     width: "100%",
+  },
+  languageSelect: {
+    position: "absolute",
+    top: (StatusBar.currentHeight ?? 0) + 10,
+    right: 16,
   },
   content: {
     paddingHorizontal: 20,
