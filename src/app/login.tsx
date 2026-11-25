@@ -19,6 +19,7 @@ import {
   View,
 } from "react-native";
 import { useTranslation } from "react-i18next";
+import { EMAIL_REGEX } from "@/utils/validation";
 
 type Form = {
   email: string;
@@ -31,7 +32,7 @@ type Error = {
   anyError: string;
 };
 
-export default function login() {
+export default function Login() {
   const { handleLogin } = useUsers();
   const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
@@ -46,36 +47,47 @@ export default function login() {
   });
 
   const handleCheck = async () => {
-    if (!form.email && !form.password) {
-      handleError("anyError", t("validation.fillAll"));
-      setErrors({
-        errorEmail: " ",
-        errorPassword: " ",
-        anyError: t("validation.fillAll"),
+    console.log("Init");
+
+    // if (!form.email && !form.password) {
+    //   handleError("anyError", t("validation.fillAll"));
+    //   setErrors({
+    //     errorEmail: " ",
+    //     errorPassword: " ",
+    //     anyError: t("validation.fillAll"),
+    //   });
+    //   return;
+    // }
+
+    // if (!form.email) {
+    //   handleError("errorEmail", t("validation.enterEmail"));
+    //   return;
+    // }
+    // if (!form.password) {
+    //   handleError("errorPassword", t("validation.enterPassword"));
+    //   return;
+    // }
+
+    // if (!EMAIL_REGEX.test(form.email.trim())) {
+    //   handleError("errorEmail", t("validation.emailInvalid"));
+    //   return;
+    // }
+
+    console.log(form);
+    
+    const user = await client
+      .get("/users", {
+        params: {
+          email: form.email.trim().toLowerCase(),
+          password: form.password,
+        },
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        console.log("Finaly");
       });
-      return;
-    }
-
-    if (!form.email) {
-      handleError("errorEmail", t("validation.enterEmail"));
-      return;
-    }
-    if (!form.password) {
-      handleError("errorPassword", t("validation.enterPassword"));
-      return;
-    }
-
-    if (!form.email.includes("@")) {
-      handleError("errorEmail", t("validation.emailAtSymbol"));
-      return;
-    }
-
-    const user = await client.get("/users", {
-      params: {
-        email: form.email.trim().toLowerCase(),
-        password: form.password,
-      },
-    });
 
     if (!user) {
       handleError("anyError", t("validation.invalidCredentials"));

@@ -13,6 +13,12 @@ export type Address = {
   longitude: number;
 };
 
+export type Session = {
+  userId: string;
+  createAt: number;
+  expiresAt: number;
+};
+
 export type IoniconName = keyof typeof Ionicons.glyphMap;
 
 export type LanguageSelectProps = {

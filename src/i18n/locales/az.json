@@ -32,7 +32,7 @@
     "enterEmail": "Zəhmət olmasa, e-poçtu daxil edin",
     "enterPassword": "Zəhmət olmasa, şifrəni daxil edin",
     "enterFullname": "Zəhmət olmasa, ad və soyadı daxil edin",
-    "emailAtSymbol": "Zəhmət olmasa, `@` simvolundan istifadə edin",
+    "passwordInvalid": "Şifrə ən azı 8 simvol olmalı, böyük hərf, kiçik hərf və rəqəm ehtiva etməlidir",
     "passwordMismatch": "Şifrəni düzgün təkrarlamadınız!",
     "invalidCredentials": "E-poçt və ya şifrə yanlışdır.",
     "emailTaken": "Bu e-poçt hesabı artıq qeydiyyatdan keçib.",

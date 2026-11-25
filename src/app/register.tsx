@@ -17,6 +17,7 @@ import useUsers from "@/context/UsersProvider";
 import LanguageSelect from "@/components/languageSelect";
 import { useTranslation } from "react-i18next";
 import { client } from "@/api/authContext";
+import { EMAIL_REGEX, PASSWORD_REGEX } from "@/utils/validation";
 
 type Form = {
   id: string;
@@ -35,7 +36,7 @@ type Error = {
   anyError: string;
 };
 
-export default function register() {
+export default function Register() {
   const { handleRegister } = useUsers();
   const { t } = useTranslation();
   const [passOpen, setPassOpen] = useState<boolean>(false);
@@ -101,13 +102,18 @@ export default function register() {
       return;
     }
 
-    if (!form.email.includes("@")) {
-      handleError("errorEmail", t("validation.emailAtSymbol"));
+    if (!EMAIL_REGEX.test(form.email.trim())) {
+      handleError("errorEmail", t("validation.emailInvalid"));
       return;
     }
 
     if (!form.password) {
       handleError("errorPassword", t("validation.enterPassword"));
+      return;
+    }
+
+    if (!PASSWORD_REGEX.test(form.password)) {
+      handleError("errorPassword", t("validation.passwordInvalid"));
       return;
     }
 

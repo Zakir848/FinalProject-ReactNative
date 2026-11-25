@@ -32,7 +32,7 @@
     "enterEmail": "Please enter your email",
     "enterPassword": "Please enter your password",
     "enterFullname": "Please enter your full name",
-    "emailAtSymbol": "Please use the `@` symbol",
+    "passwordInvalid": "Password must be at least 8 characters and include an uppercase letter, a lowercase letter and a number",
     "passwordMismatch": "Passwords do not match!",
     "invalidCredentials": "Email or password is incorrect.",
     "emailTaken": "This email is already registered.",

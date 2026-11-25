@@ -10,3 +10,6 @@ export const IMAGE_MIME_REGEX = /^image\/(jpe?g|png|webp|heic)$/i;
 export const IMAGE_EXT_REGEX = /\.(jpe?g|png|webp|heic)$/i;
 
 export const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5 MB
+
+// Şifrə: ən azı 8 simvol, 1 böyük hərf, 1 kiçik hərf və 1 rəqəm, boşluqsuz
+export const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)\S{8,}$/;

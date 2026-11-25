@@ -1,26 +1,18 @@
 import {
   createContext,
-  Dispatch,
   ReactNode,
-  SetStateAction,
   useContext,
   useEffect,
-  useState,
+  useState
 } from "react";
 
 import { client } from "@/api/authContext";
 import { getToken, removeToken, saveToken } from "@/api/authStorage";
 import { generateToken } from "@/api/token";
+import { Address, ProfileUpdate, Session } from "@/types/types";
 import { router } from "expo-router";
-import { Alert } from "react-native";
-import { Address, ProfileUpdate } from "@/types/types";
 import { useTranslation } from "react-i18next";
-
-type Session = {
-  userId: string;
-  createAt: string;
-  expiresAt: string;
-};
+import { Alert } from "react-native";
 
 type User = {
   id: string;
@@ -68,7 +60,7 @@ export function UsersProvider({ children }: { children: ReactNode }) {
 
         const parsedToken: Session = JSON.parse(token);
 
-        if (new Date(parsedToken.expiresAt).getTime() <= Date.now()) {
+        if (parsedToken.expiresAt <= Date.now()) {
           await removeToken();
           return;
         }
@@ -113,6 +105,8 @@ export function UsersProvider({ children }: { children: ReactNode }) {
       const { password, ...safeUser } = response.data[0];
       await saveToken(generateToken(safeUser.id));
       setCurrentUser(safeUser);
+      console.log("Hare");
+
       router.replace("/(tabs)/home");
     } catch (error) {
       console.log("login error:", error);
@@ -159,10 +153,11 @@ export function UsersProvider({ children }: { children: ReactNode }) {
         }
       }
 
-      const { data: updated } = await client.patch(
-        `/users/${currentUser.id}`,
-        { fullname: data.fullname.trim(), email, imageUrl: data.imageUrl },
-      );
+      const { data: updated } = await client.patch(`/users/${currentUser.id}`, {
+        fullname: data.fullname.trim(),
+        email,
+        imageUrl: data.imageUrl,
+      });
 
       const { password, ...safeUser } = updated;
       setCurrentUser(safeUser);
